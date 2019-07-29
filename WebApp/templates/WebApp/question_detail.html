@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-  <script src="https://code.jquery.com/jquery-1.9.1.min.js">
+  <script>
 function changeUrl() {
 var site ="https://www.viewstl.com/?embedded&url=" + window.location.origin+"/media/{{ object.Model }}";
 document.getElementsByName('FrameName')[0].src = site;
