@@ -1,7 +1,31 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js">
+function changeUrl() {
+var site ="https://www.viewstl.com/?embedded&url=" + window.location.origin+"/media/{{ object.Model }}";
+document.getElementsByName('FrameName')[0].src = site;
+console.log(site);
+ }
+
+
+
+ $( window ).on( "load", function() {
+    changeUrl();
+     $('#noclick').contents().find('a').click(function(event) {
+        alert("demo only");
+        event.preventDefault();
+    });
+});
+
+
+ window.onload = changeUrl;
+
+
+</script>
+
+
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <body class="text-center">
@@ -25,29 +49,5 @@ Option4: <strong>  {{ object.Option4 }}</strong></h2>
 </body>
 
 
-    <script>
-function changeUrl() {
-var site ="https://www.viewstl.com/?embedded&url=" + window.location.origin+"/media/{{ object.Model }}";
-document.getElementsByName('FrameName')[0].src = site;
-console.log(site);
- }
-
-
-
- $( window ).on( "load", function() {
-    changeUrl();
-     $('#noclick').contents().find('a').click(function(event) {
-        alert("demo only");
-        event.preventDefault();
-    });
-});
-
-
-
-
- window.onload = changeUrl;
-
-
-</script>
 
 {% endblock %}
