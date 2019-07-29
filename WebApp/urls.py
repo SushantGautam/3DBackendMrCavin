@@ -18,7 +18,7 @@ urlpatterns = (
 
 urlpatterns += (
     # urls for Question
-    path('WebApp/question/', views.QuestionListView.as_view(), name='WebApp_question_list'),
+    path('', views.QuestionListView.as_view(), name='WebApp_question_list'),
     path('WebApp/question/create/', views.QuestionCreateView.as_view(), name='WebApp_question_create'),
     path('WebApp/question/detail/<slug:slug>/', views.QuestionDetailView.as_view(), name='WebApp_question_detail'),
     path('WebApp/question/update/<slug:slug>/', views.QuestionUpdateView.as_view(), name='WebApp_question_update'),
