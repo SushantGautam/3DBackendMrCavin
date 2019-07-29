@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<body class="text-center">
+<div class="container">
+  <div class="row">
+      <div class="col">
+          <iframe id="noclick" name="FrameName"  style="border:0;margin:0;width:100%;height:60%;" ></iframe>
+
+
+<h1>Question:<strong> {{ object.name }} </strong>  </h1>
+    <h2>Option1: <strong>  {{ object.Option1 }} </strong> </h2><h2>
+Option2: <strong>  {{ object.Option2 }}</strong></h2><h2>
+Option3: <strong> {{ object.Option3 }}</strong></h2><h2>
+Option4: <strong>  {{ object.Option4 }}</strong></h2>
+<br><br>
+     <h2> <a  href="{% url 'WebApp_question_list' %}">Question Listing</a> </h2>
+
+      </div></div></div>
+
+
+</body>
+
+
+    <script>
+function changeUrl() {
+var site ="https://www.viewstl.com/?embedded&url=" + window.location.origin+"/media/{{ object.Model }}";
+document.getElementsByName('FrameName')[0].src = site;
+console.log(site);
+ }
+
+
+
+ $( window ).on( "load", function() {
+    changeUrl();
+     $('#noclick').contents().find('a').click(function(event) {
+        alert("demo only");
+        event.preventDefault();
+    });
+});
+
+
+
+
+ window.onload = changeUrl;
+
+
+</script>
+
+{% endblock %}

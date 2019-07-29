@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<body class="text-center">
+<div class="container">
+  <div class="row">
+      <div class="col">
+      <br><br>s
+<h1>NSD 3D Exam Demo </h1>
+<br><br>
+<h1><a  href="{% url 'WebApp_question_list' %}">Question Listing</a></h1>
+<table class="table"  style="
+    font-size: xx-large;
+">
+<tr>
+<td>Question</td>
+
+
+    <td>Option1</td>
+    <td>Option2</td>
+    <td>Option3</td>
+    <td>Option4</td>
+</tr>
+{% for object in object_list %}
+<tr>
+
+    <td><a href="{{object.get_absolute_url}}">{{object.name}}</a></td>
+
+    <td>{{ object.Option1 }}</td>
+    <td>{{ object.Option2 }}</td>
+    <td>{{ object.Option3 }}</td>
+    <td>{{ object.Option4 }}</td>
+</tr>
+{% endfor %}
+{#</table><a class="btn btn-primary" href="{% url 'WebApp_question_create' %}">Create new Question</a>#}
+
+</table></div>
+{% endblock %}
